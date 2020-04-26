@@ -1,3 +1,5 @@
+open Prefixtree
+
 type tile = {
   letters : string;
   points : int;
