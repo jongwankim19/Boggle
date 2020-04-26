@@ -6,11 +6,13 @@ end
 
 module SetupCheck : SetupSig = Setup
 
-module type PrefixTreeSig = sig
-
+module type PrefixtreeSig = sig
+  type prefix_tree
+  val init : string -> prefix_tree
+  val insert : string -> prefix_tree -> (string * prefix_tree) list
 end
 
-module PrefixTreeCheck : PrefixTreeSig = PrefixTree
+module PrefixTreeCheck : PrefixtreeSig = Prefixtree
 
 module type AuthorsSig = sig
   val hours_worked : int list

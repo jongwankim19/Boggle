@@ -7,7 +7,8 @@ end
 module SetupCheck : SetupSig = Setup
 
 module type PrefixTreeSig = sig
-
+  type prefix_tree
+  val init : string -> prefix_tree
 end
 
 module PrefixTreeCheck : PrefixTreeSig = PrefixTree

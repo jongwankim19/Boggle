@@ -1,34 +1,20 @@
 ### Starting build.
-# Target: setup.mli.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:mli, file:setup.mli, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules setup.mli > setup.mli.depends # cached
-# Target: setup.cmi, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:mli, file:setup.mli, interf, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o setup.cmi setup.mli # cached
-# Target: setup.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:ml, file:setup.ml, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules setup.ml > setup.ml.depends # cached
-# Target: setup.cmo, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:cmo, extension:ml, file:setup.cmo, file:setup.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o setup.cmo setup.ml # cached
-# Target: prefixtree.mli.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:mli, file:prefixtree.mli, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules prefixtree.mli > prefixtree.mli.depends # cached
-# Target: prefixtree.cmi, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:mli, file:prefixtree.mli, interf, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o prefixtree.cmi prefixtree.mli # cached
-# Target: prefixtree.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:ml, file:prefixtree.ml, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules prefixtree.ml > prefixtree.ml.depends # cached
-# Target: prefixtree.cmo, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:cmo, extension:ml, file:prefixtree.cmo, file:prefixtree.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o prefixtree.cmo prefixtree.ml # cached
-# Target: main.mli.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:mli, file:main.mli, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules main.mli > main.mli.depends # cached
-# Target: main.cmi, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:mli, file:main.mli, interf, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o main.cmi main.mli # cached
-# Target: main.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:ml, file:main.ml, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules main.ml > main.ml.depends # cached
-# Target: main.cmo, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o main.cmo main.ml # cached
+# Target: checktypes.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:ml, file:checktypes.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules checktypes.ml > checktypes.ml.depends
 # Target: authors.mli.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:mli, file:authors.mli, ocaml, ocamldep, quiet, traverse }
 ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules authors.mli > authors.mli.depends # cached
 # Target: authors.cmi, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:mli, file:authors.mli, interf, ocaml, quiet, traverse }
 ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o authors.cmi authors.mli # cached
-# Target: authors.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:ml, file:authors.ml, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules authors.ml > authors.ml.depends # cached
-# Target: authors.cmo, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:cmo, extension:ml, file:authors.cmo, file:authors.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o authors.cmo authors.ml # cached
-# Compilation successful.
+# Target: setup.mli.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:mli, file:setup.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules setup.mli > setup.mli.depends # cached
+# Target: setup.cmi, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:mli, file:setup.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o setup.cmi setup.mli # cached
+# Target: checktypes.cmo, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:cmo, extension:ml, file:checktypes.cmo, file:checktypes.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o checktypes.cmo checktypes.ml
++ ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o checktypes.cmo checktypes.ml
+File "checktypes.ml", line 14, characters 41-51:
+14 | module PrefixTreeCheck : PrefixTreeSig = PrefixTree
+                                              ^^^^^^^^^^
+Error: Unbound module PrefixTree
+Command exited with code 2.
+# Compilation unsuccessful.
