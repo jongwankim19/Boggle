@@ -1,5 +1,6 @@
 open OUnit2
 open Setup
+open Prefixtree
 
 (********************************************************************
    Here are some helper functions for your testing of set-like lists. 
@@ -53,9 +54,12 @@ let cmp_demo =
    End helper functions.
  ********************************************************************)
 
-let suite =
-  "test suite for A2"  >::: List.flatten [
+let board_tests = [
+]
 
+let suite =
+  "test suite for Boggle"  >::: List.flatten [
+    board_tests;
   ]
 
 let _ = run_test_tt_main suite

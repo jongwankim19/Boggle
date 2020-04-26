@@ -45,3 +45,19 @@ let rec generate_board n board = if n = 0 then board else
 
 (** [generate_board_init n] takes in the number of tiles and makes board. *)
 let generate_board_init n = generate_board n []
+
+(** [to_board_str board] converts a tile board into string board. *)
+let to_board_str board = 
+  let rec to_str board ret = 
+    match board with 
+    | [] -> ret
+    | h :: t -> to_str t (h.letters :: ret)
+  in [] |> to_str board |> List.rev |> String.concat ""
+
+(** [display board_str] displays board in square form. *)
+let display b = 
+  Printf.printf "%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n"
+    b.[ 0] b.[ 1] b.[ 2] b.[ 3]
+    b.[ 4] b.[ 5] b.[ 6] b.[ 7]
+    b.[ 8] b.[ 9] b.[10] b.[11]
+    b.[12] b.[13] b.[14] b.[15]
