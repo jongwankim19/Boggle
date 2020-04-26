@@ -1,4 +1,4 @@
-MODULES=author
+MODULES= setup prefixtree main authors
 OBJECTS=$(MODULES:=.cmo)
 MLS=$(MODULES:=.ml)
 MLIS=$(MODULES:=.mli)
