@@ -68,7 +68,7 @@ let rec display_scores board =
   match board with 
   | [] -> Printf.printf "\n"
   | h :: t -> begin
-      Printf.printf "%s at %d : %d\n" h.letters h.position h.points;
+      Printf.printf "%s at  %d : %d\n" h.letters h.position h.points;
       display_scores t
     end
 
