@@ -74,3 +74,12 @@ let rec display_scores board =
 
 (** [cores board] displays each tile's letter and its point value. *)
 let scores board = display_scores board
+
+(** [word_list file_name] loads all words in [file_name] into a list. *)
+let word_list file_name = 
+  let file = open_in file_name in 
+  let rec read lst = 
+    match input_line file with
+    | word -> read (String.lowercase_ascii word :: lst)
+    | exception End_of_file -> close_in file; List.rev lst
+  in read []

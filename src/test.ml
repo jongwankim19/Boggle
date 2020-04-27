@@ -54,12 +54,24 @@ let cmp_demo =
    End helper functions.
  ********************************************************************)
 
-let board_tests = [
+let word_tests = [
+  "Testing small test input" >:: 
+  (fun _ -> assert_equal ["computer"; "science"] (word_list "small_text.txt"));
+
+  "Testing small test 1 input" >:: 
+  (fun _ -> 
+     assert_equal ["this"; "is"; "a"; "weird"; "set"; "of"; "words"] 
+       (word_list "small_text_1.txt"));
+
+  "Testing small test 2 input" >:: 
+  (fun _ -> 
+     assert_equal ["hello world"; "cs 3110"; "nate is great"; "checking 1"; 
+                   "hello from the other side"] (word_list "small_text_2.txt"))
 ]
 
 let suite =
   "test suite for Boggle"  >::: List.flatten [
-    board_tests;
+    word_tests;
   ]
 
 let _ = run_test_tt_main suite

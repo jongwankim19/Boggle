@@ -10,6 +10,6 @@ right now is pretty small. Although we finished implementing the prefix tree,
 we haven't been able to figure out how to read all words from dictionary.txt 
 and load it to the prefix tree. Once we figure that out, we think that we can 
 make more rapid progress. For now, running "make play" displays the game board 
-with each randomly generated letters. Once the board is displayed, the user must 
-exit out of interactive mode by clicking ^C. For testing, make sure that each 
-tile is at most 2 lowercase letters and that there are exactly 16 tiles.
+with each randomly generated letters. Once the board is displayed, the user must
+make sure that each tile is at most 2 lowercase letters and that there are 
+exactly 16 tiles.

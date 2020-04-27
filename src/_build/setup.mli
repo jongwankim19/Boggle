@@ -9,3 +9,5 @@ val to_board_str_list : tile list -> string list
 val display : string list -> unit
 
 val scores : tile list -> unit
+
+val word_list : string -> string list
