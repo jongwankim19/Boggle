@@ -4,7 +4,7 @@ ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules
 # Target: main.cmi, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:mli, file:main.mli, interf, ocaml, quiet, traverse }
 ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o main.cmi main.mli # cached
 # Target: main.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:ml, file:main.ml, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules main.ml > main.ml.depends # cached
+ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules main.ml > main.ml.depends
 # Target: prefixtree.mli.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:mli, file:prefixtree.mli, ocaml, ocamldep, quiet, traverse }
 ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules prefixtree.mli > prefixtree.mli.depends # cached
 # Target: prefixtree.cmi, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:mli, file:prefixtree.mli, interf, ocaml, quiet, traverse }
@@ -14,7 +14,7 @@ ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules
 # Target: setup.cmi, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:mli, file:setup.mli, interf, ocaml, quiet, traverse }
 ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o setup.cmi setup.mli # cached
 # Target: main.cmo, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:cmo, extension:ml, file:main.cmo, file:main.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o main.cmo main.ml # cached
+ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o main.cmo main.ml
 # Target: prefixtree.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(yojson), extension:ml, file:prefixtree.ml, ocaml, ocamldep, quiet, traverse }
 ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules prefixtree.ml > prefixtree.ml.depends # cached
 # Target: prefixtree.cmo, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:cmo, extension:ml, file:prefixtree.cmo, file:prefixtree.ml, implem, ocaml, quiet, traverse }
@@ -24,5 +24,5 @@ ocamlfind ocamldep -package oUnit -package yojson -package ANSITerminal -modules
 # Target: setup.cmo, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, compile, extension:cmo, extension:ml, file:setup.cmo, file:setup.ml, implem, ocaml, quiet, traverse }
 ocamlfind ocamlc -c -package oUnit -package yojson -package ANSITerminal -o setup.cmo setup.ml # cached
 # Target: main.byte, tags: { package(ANSITerminal), package(oUnit), package(yojson), byte, dont_link_with, extension:byte, file:main.byte, link, ocaml, program, quiet, traverse }
-ocamlfind ocamlc -linkpkg -package oUnit -package yojson -package ANSITerminal prefixtree.cmo setup.cmo main.cmo -o main.byte # cached
+ocamlfind ocamlc -linkpkg -package oUnit -package yojson -package ANSITerminal prefixtree.cmo setup.cmo main.cmo -o main.byte
 # Compilation successful.

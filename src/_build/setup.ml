@@ -36,28 +36,41 @@ let make_tile ltrs pos = {
 (** [generate_board n board] randomly generates a board of n strings. *)
 let rec generate_board n board = if n = 0 then board else 
     begin
+      let () = Random.self_init () in 
       let char1 = (97 + (Random.int 26)) |> Char.chr |> String.make 1 in 
       let char2 = (97 + (Random.int 26)) |> Char.chr |> String.make 1 in
-      if Random.int 20 <= 5 then 
+      if Random.int 100 <= 5 then 
         generate_board (n-1) ((make_tile (char1 ^ char2) n) :: board) else 
-        generate_board (n - 1) ((make_tile char1 n) :: board)
+        generate_board (n - 1) ((make_tile (char1 ^ " ") n) :: board)
     end
 
 (** [generate_board_init n] takes in the number of tiles and makes board. *)
 let generate_board_init n = generate_board n []
 
 (** [to_board_str board] converts a tile board into string board. *)
-let to_board_str board = 
+let to_board_str_list board = 
   let rec to_str board ret = 
     match board with 
     | [] -> ret
     | h :: t -> to_str t (h.letters :: ret)
-  in [] |> to_str board |> List.rev |> String.concat ""
+  in [] |> to_str board |> List.rev
 
-(** [display board_str] displays board in square form. *)
+(** [display b] displays board in square form. *)
 let display b = 
-  Printf.printf "%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n%c %c %c %c\n"
-    b.[ 0] b.[ 1] b.[ 2] b.[ 3]
-    b.[ 4] b.[ 5] b.[ 6] b.[ 7]
-    b.[ 8] b.[ 9] b.[10] b.[11]
-    b.[12] b.[13] b.[14] b.[15]
+  Printf.printf "%s %s %s %s\n%s %s %s %s\n%s %s %s %s\n%s %s %s %s\n"
+    (List.nth b 0) (List.nth b 1) (List.nth b 2) (List.nth b 3)
+    (List.nth b 4) (List.nth b 5) (List.nth b 6) (List.nth b 7) 
+    (List.nth b 8) (List.nth b 9) (List.nth b 10) (List.nth b 11)
+    (List.nth b 12) (List.nth b 13) (List.nth b 14) (List.nth b 15)
+
+(** [display_scores board] displays each tile's letter and its point value. *)
+let rec display_scores board = 
+  match board with 
+  | [] -> Printf.printf "\n"
+  | h :: t -> begin
+      Printf.printf "%s at %d : %d\n" h.letters h.position h.points;
+      display_scores t
+    end
+
+(** [cores board] displays each tile's letter and its point value. *)
+let scores board = display_scores board
