@@ -1,7 +1,7 @@
 open Prefixtree
 
 type tile = {
-  letters : string;
+  letter : string;
   points : int;
   position : int;
 }
@@ -27,8 +27,8 @@ let adjacency_list =
   ]
 
 (** [make_tile ltrs pos] instantiates the tile given the letter and position. *)
-let make_tile ltrs pos = {
-  letters = ltrs;
+let make_tile ltr pos = {
+  letter = ltr;
   points = Random.int 50;
   position = pos;
 }
@@ -37,11 +37,8 @@ let make_tile ltrs pos = {
 let rec generate_board n board = if n = 0 then board else 
     begin
       let () = Random.self_init () in 
-      let char1 = (97 + (Random.int 26)) |> Char.chr |> String.make 1 in 
-      let char2 = (97 + (Random.int 26)) |> Char.chr |> String.make 1 in
-      if Random.int 100 <= 5 then 
-        generate_board (n-1) ((make_tile (char1 ^ char2) n) :: board) else 
-        generate_board (n - 1) ((make_tile (char1 ^ " ") n) :: board)
+      let c = (97 + (Random.int 26)) |> Char.chr |> String.make 1 in 
+      generate_board (n - 1) ((make_tile (c ^ " ") n) :: board)
     end
 
 (** [generate_board_init n] takes in the number of tiles and makes board. *)
@@ -52,7 +49,7 @@ let to_board_str_list board =
   let rec to_str board ret = 
     match board with 
     | [] -> ret
-    | h :: t -> to_str t (h.letters :: ret)
+    | h :: t -> to_str t (h.letter :: ret)
   in [] |> to_str board |> List.rev
 
 (** [display b] displays board in square form. *)
@@ -68,7 +65,7 @@ let rec display_scores board =
   match board with 
   | [] -> Printf.printf "\n"
   | h :: t -> begin
-      Printf.printf "%s at  %d : %d\n" h.letters h.position h.points;
+      Printf.printf "%s at  %d : %d\n" h.letter h.position h.points;
       display_scores t
     end
 
