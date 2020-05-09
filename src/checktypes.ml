@@ -4,7 +4,6 @@ module type SetupSig = sig
   val generate_board_init : int -> tile list
   val to_board_str_list : tile list -> string list
   val display : string list -> unit
-  val scores : tile list -> unit
   val word_list : string -> string list
 end
 
@@ -16,6 +15,12 @@ module type PrefixtreeSig = sig
 end
 
 module PrefixTreeCheck : PrefixtreeSig = Prefixtree
+
+module type CheckSig = sig
+  val get_valids : string list -> string list -> int -> int
+end
+
+module CheckCheck : CheckSig = Check
 
 module type AuthorsSig = sig
   val hours_worked : int list

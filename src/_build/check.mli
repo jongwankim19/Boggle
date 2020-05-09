@@ -1,0 +1,1 @@
+val get_valids : string list -> string list -> int -> int
