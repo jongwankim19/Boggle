@@ -2,18 +2,23 @@ open Setup
 open Prefixtree
 open Check
 
+let print_to_file score = 
+  let oc = open_out_gen [Open_append; Open_creat] 0o666 "scores.txt" in 
+  Printf.fprintf oc "%d\n" score;
+  close_out oc
+
 let rec compile_words user_words = 
   match user_words with 
   | [] -> ""
   | h :: [] -> h
   | h :: t -> h ^ ", " ^ compile_words t
 
-
 let end_state user_words dict = 
   "This is the list of your inputs: " ^ "[" ^ compile_words user_words ^ "]\n" 
   |> print_string;
   let valid_cnt = get_valids user_words dict 0 in 
-  Printf.printf "The number of your valid words is: %d\n" valid_cnt;
+  Printf.printf "The count of your valid words is: %d\n" valid_cnt;
+  valid_cnt |> print_to_file;
   exit 0
 
 (** [round_float flt] rounds [flt] to two decimal places. *)
