@@ -1,4 +1,4 @@
-MODULES= setup prefixtree check main authors
+MODULES= setup prefixtree check filecheck main authors
 OBJECTS=$(MODULES:=.cmo)
 MLS=$(MODULES:=.ml)
 MLIS=$(MODULES:=.mli)

@@ -1,1 +1,1 @@
-val get_valids : string list -> string list -> int -> int
+val get_valids : string list -> string list -> string list

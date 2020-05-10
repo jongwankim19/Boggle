@@ -17,10 +17,18 @@ end
 module PrefixTreeCheck : PrefixtreeSig = Prefixtree
 
 module type CheckSig = sig
-  val get_valids : string list -> string list -> int -> int
+  val get_valids : string list -> string list -> string list
 end
 
 module CheckCheck : CheckSig = Check
+
+module type FilecheckSig = sig
+  val print_to_file : string -> int -> unit
+  val clear_score : string -> string -> unit
+  val compile_scores : string -> string list
+end
+
+module FileCheckCheck : FilecheckSig = Filecheck
 
 module type AuthorsSig = sig
   val hours_worked : int list

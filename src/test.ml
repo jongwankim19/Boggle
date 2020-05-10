@@ -1,6 +1,8 @@
 open OUnit2
 open Setup
 open Prefixtree
+open Check
+open Filecheck
 
 (********************************************************************
    Here are some helper functions for your testing of set-like lists. 
