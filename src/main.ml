@@ -15,11 +15,17 @@ let end_state user_words dict =
 
   let valids = get_valids user_words dict in 
   let cnt = List.length valids in 
-  Printf.printf "The count of your valid words is: %d\n" cnt;
+  Printf.printf 
+    "The count of your valid words is: %d out of %d all possible words. \n" 
+    cnt (List.length dict);
   cnt |> print_to_file "scores.txt";
   print_string "These are the words that you got right: ";
   ANSITerminal.(print_string [green; Bold] 
                   ("[" ^ compile_words valids ^ "]\n" ));
+
+  print_string "These are all the possible words from the board: ";
+  ANSITerminal.(print_string [green; Bold] 
+                  ("[" ^ compile_words dict ^ "]\n" ));
 
   print_endline "\n";
 
@@ -38,7 +44,7 @@ let end_state user_words dict =
 let round_float flt = (flt *. 100. +. 0.5 |> floor) /. 100.
 
 (** [play board time_limit start] plays the game until [time_limit]. *)
-let rec play user_words dict board time_limit start = 
+let rec play all_words user_words dict board time_limit start = 
   let time_diff = Unix.gettimeofday () -. start in 
   let () = ANSITerminal.(print_string [green] 
                            ("\n" ^ (time_diff |> round_float |> string_of_float)
@@ -49,12 +55,12 @@ let rec play user_words dict board time_limit start =
                      "|                 |" ^ "\n" ^ "| *** TIME UP *** |" ^ 
                      "\n" ^ "|                 |" ^ "\n"  ^ 
                      "|-----------------|" ^ "\n" ^ "\n\n"));
-    end_state (List.sort_uniq compare user_words) dict
+    end_state (List.sort_uniq compare user_words) all_words (* dict *)
   end 
   else begin
     print_string "> ";
     let word = read_line () in 
-    play (word :: user_words) dict board time_limit start
+    play all_words (word :: user_words) dict board time_limit start
   end
 
 (** [main ()] sets up the game. *)
@@ -70,7 +76,10 @@ let main () =
   print_endline "\n";
 
   let board = generate_board_init 16 in 
-  let dictionary = word_list "dictionary.txt" in begin
+  let dictionary = word_list "dictionary.txt" in 
+  let prefix_tree = dictionary |> create_trie in 
+  let lst_of_all_words = all_words board prefix_tree |> intersect dictionary in 
+  begin
     ANSITerminal.(print_string [yellow; Bold] "This is your board: \n\n");
     board |> to_board_str_list |> display;
 
@@ -84,7 +93,8 @@ let main () =
     | None -> 
       ANSITerminal.(print_string [magenta; Bold] 
                       "\n\nGame ended due to invalid time.\n\n");
-    | Some time -> Unix.gettimeofday () |> play [] dictionary board time
+    | Some time -> 
+      Unix.gettimeofday () |> play lst_of_all_words [] dictionary board time
   end
 
 (* Execute the game engine. *)

@@ -1,3 +1,5 @@
+open Prefixtree
+
 type tile = {
   letters : string;
   position : int;
@@ -35,9 +37,9 @@ let rec generate_board n board = if n = 0 then board else
       let () = Random.self_init () in 
       let char1 = (97 + (Random.int 26)) |> Char.chr |> String.make 1 in
       let char2 = (97 + (Random.int 26)) |> Char.chr |> String.make 1 in
-      if Random.int 100 < 5 then 
+      (*if Random.int 100 < 5 then 
         generate_board (n - 1) ((make_tile (char1 ^ char2) n) :: board) else
-        generate_board (n - 1) ((make_tile (char1 ^ " ") n) :: board)
+      *)generate_board (n - 1) ((make_tile char1 n) :: board)
     end
 
 (** [generate_board_init n] takes in the number of tiles and makes board. *)
@@ -67,3 +69,31 @@ let word_list file_name =
     | word -> read (String.lowercase_ascii word :: lst)
     | exception End_of_file -> close_in file; List.rev lst
   in read []
+
+let rec memword word dict = 
+  match dict with 
+  | [] -> false
+  | h :: t -> if h = word then true else memword word t
+
+let rec all_possible_helper board ind visited running tr st = 
+  if mem ind visited then running else 
+    let cur_tile = List.nth board ind in 
+    let new_str = st ^ cur_tile.letters in 
+    let adj = List.nth adjacency_list ind in 
+    match find new_str tr with 
+    | None -> running
+    | Some v -> if memword new_str running then running else 
+        for_each board adj (ind::visited) (new_str::running) tr new_str
+
+and for_each board inds visited running tr str = 
+  match inds with 
+  | [] -> running
+  | h :: t -> if mem h visited then running  else for_each board t visited 
+        (all_possible_helper board h visited running tr str) tr str
+
+let rec all_possible board ind running tr = 
+  if ind = 16 then running else 
+    let new_running = all_possible_helper board ind [] running tr "" in 
+    all_possible board (ind + 1) (List.append new_running running) tr
+
+let all_words board tr = all_possible board 0 [] tr |> List.sort_uniq compare

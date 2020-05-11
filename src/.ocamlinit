@@ -2,5 +2,8 @@
 #require "yojson";;
 #require "ANSITerminal";;
 #directory "_build";;
+#load "str.cma";;
 #load "prefixtree.cmo";;
 #load "setup.cmo";;
+#load "check.cmo";;
+#load "filecheck.cmo";;

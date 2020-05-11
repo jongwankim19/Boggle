@@ -1,1 +1,1 @@
-prefixtree.ml: String
+prefixtree.ml: List String
